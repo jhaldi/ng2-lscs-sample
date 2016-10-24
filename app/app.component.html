@@ -1,13 +1,58 @@
-<h5>App component is running!</h5>
-<div class="container-fluid">
 
-    <h1>{{title}}</h1>
-    <!--<nav>
-        <a routerLink="/sample1" routerLinkActive="active">Sample #1</a>
-        <a routerLink="/sample2" routerLinkActive="active">Sample #2</a>
+<!-- Banner Section -->
+<div *ngIf="banner">
+    <header [style.background-image]="'url(' + bannerImageUrl + ')'">
+        <div class="container">
+            <div class="intro-text">
+                <!--<div class="intro-lead-in">{{banner.banner_caption}}</div>-->
+                <div class="intro-heading">{{banner.banner_caption}}</div>
+                <a href="#promotions" class="page-scroll btn btn-xl">Tell Me More</a>
+            </div>
+        </div>
+    </header>
+</div>
 
-    </nav>
+<div class="container" id="selectorbuttons">
+    <div class="col-md-5">
+        <h3>Give it a whirl</h3>
+        <p>
+            Use the buttons to the right to play with the different combinations. Normally this would be done in
+            code,
+            reacting to something like a session cookie. But for demonstration we've exposed some buttons for you to
+            see what happens.
+        </p>
+    </div>
 
-    <router-outlet></router-outlet>-->
+    <div class="col-md-3">
+        <h2>Geo</h2>
+        <div class="btn-group" role="group">
+            <button type="button" class="btn btn-primary" (click)="geoClicked('usa')">USA</button>
+            <button type="button" class="btn btn-primary" (click)="geoClicked('east')">East</button>
+            <button type="button" class="btn btn-primary" (click)="geoClicked('west')">West</button>
+        </div>
+    </div>
 
+    <div class="col-md-4">
+        <h2>Personas</h2>
+        <div class="btn-group" role="group">
+            <button type="button" class="btn btn-primary" (click)="personaClicked('student')">Student</button>
+            <button type="button" class="btn btn-primary" (click)="personaClicked('adult')">Adult</button>
+            <button type="button" class="btn btn-primary" (click)="personaClicked('senior')">Senior</button>
+        </div>
+    </div>
+</div>
+
+<!-- Promotion Section -->
+<div *ngIf="promo">
+    <section id="promotions" class="bg-light-gray">
+        <div class="container">
+
+            <div class="jumbotron">
+                <h1>{{promo.promo_title}}</h1>
+                <div [innerHTML]="promo.promo_description"></div>
+                <p><a class="btn btn-primary btn-lg" href="#" role="button">Sign up now!</a></p>
+            </div>
+
+        </div>
+    </section>
 </div>

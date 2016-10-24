@@ -9,28 +9,26 @@
      then change it to
      <base href="/foobar/">
     -->
-    <base href="/">
+    <base href="/aurabank-ng2/">
 
-    <title>NG2-TEMPLATE</title>
+    <title>LSCS Angular2 Demo</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" type="image/x-icon" href="favicon.ico">
 
-    <link rel="stylesheet" href="styles.css">
-
     <!-- Bootstrap CSS -->
-    <!--<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">-->
-    <!-- Bootstrap Core CSS -->
-    <!--<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">-->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="agency.css">
 
     <!-- Custom Fonts -->
-    <!--<link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">-->
-    <!--<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
     <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet'
           type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>-->
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
 
     <!-- Polyfill(s) for older browsers -->
     <script src="node_modules/core-js/client/shim.min.js"></script>
@@ -47,7 +45,174 @@
     </script>
 </head>
 
-<body>
+
+<body id="page-top" class="index">
+
+<!-- Navigation -->
+<nav id="mainNav" class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
+            </button>
+            <a class="navbar-brand page-scroll" href="#page-top">AuraBank</a>
+            <!--<img src="img/logos/logo-color.png" class="navbar-brand page-scroll" alt="">-->
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <li class="hidden">
+                    <a href="#page-top"></a>
+                </li>
+                <li>
+                    <a class="page-scroll" href="#promotions">Promotions</a>
+                </li>
+                <li>
+                    <a class="page-scroll" href="#services">Explanation</a>
+                </li>
+                <li>
+                    <a class="page-scroll" href="#portfolio">Code</a>
+                </li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container-fluid -->
+</nav>
+
 <app-root>Loading...</app-root>
+
+<!-- Services Section -->
+<section id="services">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h2 class="section-heading">Here's What's Happening</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-10 col-md-offset-1">
+                <p>In this demo site we're using Angular2 along with Bootstrap to create a very simple single page app.
+                    The Banner area and Promo areas at the top are both controlled by an angular component that controls
+                    things dynamically from within the client browser.</p>
+                <p>Previously, we created a handful of content items in TeamSite for both Banners (which contain a
+                    caption and an image) as well as Promos (which contain a title and description). These were then
+                    published to our LSCS content server via the standard OpenDeploy mechanism. (Presumably with
+                    all the normal approval workflows, but for our demo we’ve skipped that part.)</p>
+                <p>When the page displays in the browser, the page itself is served by a web server entirely
+                    unconnected to TeamSite. The front-end display is entirely contained within the Angular2 front-end.
+                    But that Angular2 component then makes RESTful calls back to the LSCS server to fetch the
+                    appropriate
+                    content for the Banner and Promo.</p>
+                <p>As a result, we can now make changes to the Banner and Promo content items from within TeamSite,
+                    and the Angular2 site updates itself without any need for changes to the front-end.</p>
+            </div>
+            <div class="col-md-6 col-md-offset-3">
+                <img src="img/diagram2.png" class="img-responsive">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Portfolio Grid Section -->
+<section id="portfolio" class="bg-light-gray">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h2 class="section-heading">Code</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-10 col-md-offset-1">
+                <p>For those technically curious, here is the code for the angular components which are making the
+                    REST calls to render the page dynamically. (FYI our oh-so-vain programmers wanted us to
+                    include the caveat that this is not "good code", but rather proof-of-concept stuff pulled together
+                    for demonstration purposes.</p>
+                <p>The LSCS content is pulled from an angular service component as shown below. This is the piece that
+                    gets given a file name and goes out to the LSCS server and pulls back the relevant object (via
+                    RESTful calls) and returns a JSON object.</p>
+                <img src="img/RESTcode.png" class="img-responsive">
+                <p>In the app.component we have hard-wired some code using basic switch statement to pick the
+                    relevant LSCS content item based on which of the buttons have been pressed.</p>
+                <img src="img/SELECTcode.png" class="img-responsive">
+                <p>In a real-world example
+                    you wouldn't be relying on buttons to select the Persona and Geo, but rather something like a
+                    session cookie or some other internal trigger for personalization. You might also choose to not
+                    hard-wire your rules engine into the code, but could instead rely on the rules engine built into
+                    LSCS, making a RESTful call with your parameters and letting LSCS find and return the appropriate
+                    content based on those supplied parameters.</p>
+                <p>Once the appropriate Banner and Promo are fetched, they are already bound to the app.component's
+                    HTML template in standard Angular2 fashion, as shown below.</p>
+                <img src="img/TEMPLATEhtml.png" class="img-responsive">
+                <p>
+                    If you're curious, when we make the REST call we either get back XML (the default) or JSON (by
+                    adding ?format=json to the query).
+                    Here are some sample calls with hyperlinks so you can see what comes back from the server (this is
+                    live stuff, coming back from the LSCS server):</p>
+                <ul>
+                    <li>
+                        <a href="http://pocteamsite02.eastus.cloudapp.azure.com:1876/lscs/v1/document/path/templatedata/LiveSite/Banner/data/BankThatMovesQuickly.xml?project=//pocteamsite02/default/main/AuraBank"
+                           target="_blank">Simple Banner in XML</a></li>
+                    <li>
+                        <a href="http://pocteamsite02.eastus.cloudapp.azure.com:1876/lscs/v1/document/path/templatedata/LiveSite/Banner/data/BankThatMovesQuickly.xml$?project=//pocteamsite02/default/main/AuraBank"
+                           target="_blank">The same banner but with all metadata included, in XML</a></li>
+                    <li>
+                        <a href="http://pocteamsite02.eastus.cloudapp.azure.com:1876/lscs/v1/document/path/templatedata/LiveSite/Banner/data/BankThatMovesQuickly.xml$?project=//pocteamsite02/default/main/AuraBank&amp;format=json"
+                           target="_blank">The same banner with all metadata, in JSON</a></li>
+                </ul>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <span class="copyright">Copyright &copy; AuraBank 2016</span>
+            </div>
+            <div class="col-md-4">
+                <ul class="list-inline social-buttons">
+                    <li><a href="#"><i class="fa fa-twitter"></i></a>
+                    </li>
+                    <li><a href="#"><i class="fa fa-facebook"></i></a>
+                    </li>
+                    <li><a href="#"><i class="fa fa-linkedin"></i></a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-4">
+                <ul class="list-inline quicklinks">
+                    <li><a href="#">Privacy Policy</a>
+                    </li>
+                    <li><a href="#">Terms of Use</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- Portfolio Modals -->
+<!-- Use the modals below to showcase details about your portfolio projects! -->
+
+<!-- jQuery -->
+<script src="vendor/jquery/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+
+<!-- Plugin JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+
+<!-- Theme JavaScript -->
+<script src="js/agency.min.js"></script>
+
 </body>
 </html>
